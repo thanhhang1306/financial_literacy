@@ -68,14 +68,15 @@ class GameManager {
     if (this.gameState !== GameManager.GAME_STATE.DRAW_CARDS) return;
     this.gameState = GameManager.GAME_STATE.SELECT_CARDS;
 
-    this._currentCardsDrawn.push(new Card(CARD_TYPE.NEED, "Need", 100));
+    this._currentCardsDrawn.push(new Card(CARD_TYPE.NEED, "NEED", 100));
     this._currentCardsDrawn.push(new Card(CARD_TYPE.WANT, "Want", 100));
-    this._currentCardsDrawn.push(new Card(CARD_TYPE.EVENT, "Event", 100));
+    this._currentCardsDrawn.push(new Card(CARD_TYPE.WANT, "WantEvent", 100));
   
     for (const card of this._currentCardsDrawn) {
       if (!card.selectable) continue;
+      this.selectedNeed = 100;
       if (card.cardType === CARD_TYPE.NEED) this.selectedNeed += card.value;
-      else if (card.cardType === CARD_TYPE.WANT) this.selectedWant += card.value;
+      else if (card.cardType === CARD_TYPE.EVENT) this.selectedWant += card.value;
     }
     this.lazyUpdateUI();
     return this._currentCardsDrawn;

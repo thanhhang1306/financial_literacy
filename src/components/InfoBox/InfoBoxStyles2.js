@@ -1,6 +1,6 @@
 import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   infoBoxContainer: {
     display: "flex",
     flexDirection: "column",
@@ -13,9 +13,7 @@ const useStyles = makeStyles((theme) => ({
     // boxShadow: "0 0 8px 0 rgba(29, 56, 77, 1)",
     fontSize: "1.5rem"
   },
-  spacing: {
-    margin: "0.8rem"
-  },
+
   header: {
     display: "flex",
     flexDirection: "row",
@@ -41,19 +39,12 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
-  
   statsContainer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
-    flexBasis: "60%",
-    height: "10%",
-    margin: "0.8rem",
-    fontFamily: "Montserrat"
   }
-
-  
 }));
 
 export default useStyles;
