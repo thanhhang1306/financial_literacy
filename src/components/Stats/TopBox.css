@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Josefin Sans", cursive;
+  padding: 10%;
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  border: 2px solid black;
+}
+
+.stats-container {
+  display: flex;
+  margin-top: 0;
+}

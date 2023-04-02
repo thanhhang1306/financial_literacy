@@ -1,0 +1,40 @@
+.stats-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-left: 20%;
+  margin-top: 5%;
+  gap: 10%;
+}
+
+.stats-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.stats-type {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.line-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  width: 130px;
+}
+
+.change {
+  font-size: 1.3rem;
+  padding-top: 10%;
+}
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}

@@ -1,0 +1,29 @@
+.info-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+
+.name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 5%;
+}
+
+.high {
+  margin: 0;
+  font-size: 1.2rem;
+  color: green;
+}
+
+.low {
+  margin: 0;
+  font-size: 1.2rem;
+  color: red;
+}
+.person_icon {
+  width: 70%;
+  height: 50%;
+}
