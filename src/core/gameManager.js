@@ -77,12 +77,12 @@ class GameManager {
     this._currentCardsDrawn.push(needCard);
 
     /* Want Card  */
-    const randomWant = Needs[Math.floor(Math.random() * Wants.length)];
+    const randomWant = Wants[Math.floor(Math.random() * Wants.length)];
     const wantCard = new WantCard(CARD_TYPE.WANT, randomWant.text, "Want", randomWant.cost, randomWant.happy, randomWant.time);
     this._currentCardsDrawn.push(wantCard);
 
     /* Event Card */
-    const randomEvent = Needs[Math.floor(Math.random() * Events.length)];
+    const randomEvent = Events[Math.floor(Math.random() * Events.length)];
     const eventCard = new EventCard(CARD_TYPE.EVENT, randomEvent.text, "Event", randomEvent.percent, randomEvent.lump, randomEvent.happy);
     this._currentCardsDrawn.push(eventCard);
 

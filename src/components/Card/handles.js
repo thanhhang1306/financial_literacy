@@ -70,8 +70,9 @@ function _updateSummary() {
 
   const selectedCards = gameManager.getCardSelections();
   for (const card of selectedCards) {
-    if (card.cardType === 0) need += card.value;
-    else if (card.cardType === 1) want += card.value;
+    console.log(card);
+    if (card.cardType === 0) need += card.need;
+    else if (card.cardType === 1) want += card.want;
   }
 
   document.querySelector(".need").innerHTML = "Need: $" + need;
