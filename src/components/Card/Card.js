@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Box from "@mui/material/Box";
 import useStyles from "./CardStyles";
+import "./CardStyles.css";
 
 import cardBackground from "../../assets/card-background.svg";
 
@@ -11,33 +12,27 @@ import { handleHover, handleMouseLeave, handleCardClick } from "./handles";
  *  A card component.
  * 
  * Card Props:
- * @param {string} type - The type of card: { need, want, event, inactive}
- * @param {string} description - The description of the card.
- * @param {function} action - The action to be performed when the card is clicked.
  */
 
 const Card = props => {
+  const { inactive } = props;
   const classes = useStyles();
-  const { type, description, action, inactive } = props;
 
-  if (inactive)
-    return (
-      <Box className={classes.cardContainer}/>
-    );
+  const [description, setDescription] = useState("");
 
   return (
-    <Box className={classes.cardContainer} 
+    <Box className={`${classes.cardContainer} card-container`} 
         draggable="false"
-        onMouseMove={e => handleHover(e)}
-        onMouseLeave={e => handleMouseLeave(e)}
-        onClick={e => {handleCardClick(e)}}>
+        onMouseMove={e => {if(!inactive) handleHover(e)}}
+        onMouseLeave={e => {if(!inactive) handleMouseLeave(e)}}
+        onClick={e => {if(!inactive) handleCardClick(e)}}>
 
-      <div className={classes.back}>
-        {/* <img src={cardBackground} draggable="false"/> */}
+      <div className={`${classes.back} back`}>
+        <img src={cardBackground} draggable="false"/>
       </div>
 
-      <div className={classes.front}>
-        hi!
+      <div className={`${classes.front} front`}>
+        <p>hey!</p>
       </div>
     </Box>
   );

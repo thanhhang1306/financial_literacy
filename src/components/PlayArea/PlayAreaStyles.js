@@ -5,7 +5,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     flexBasis: "60%",
-    borderRight: "4px solid rgba(29, 56, 77, 1)"
+    borderRight: "3px solid rgba(29, 56, 77, 1)"
     // backgroundImage: "radial-gradient(#374b5c 1px, transparent 2px)",
     // backgroundSize: "60px 60px",
   },
@@ -37,12 +37,10 @@ const useStyles = makeStyles(() => ({
       position: "absolute",
     },
     "& > div:nth-of-type(2)": {
-      transformType: "flat",
       transform: "rotateZ(3deg)",
-      boxShadow: "1px 1px 10px 4px rgba(0, 0, 0, 0.1)"
+      boxShadow: "1px 1px 10px 4px rgba(0, 0, 0, 0.2)"
     },
     "& > div:nth-of-type(3)": {
-      transformType: "flat",
       transform: "translateX(-2px) rotateZ(5deg)",
     }
   }
