@@ -12,7 +12,7 @@ const InfoBox = ({ statsData }) => {
       <div className={classes.header}>
         <PersonIcon fontSize="large" />
         <Typography variant="h6" className={classes.spacing}>
-          Tai Sanh Nguyen
+          John Doe
         </Typography>
         <div className={classes.spacing}/>
         <Typography variant="p">
@@ -23,7 +23,7 @@ const InfoBox = ({ statsData }) => {
       <div>
       <div className={classes.statsContainer}>
           <div className="salary">Salary: {statsData.salary}</div>
-          <div className="savings">Savings: {statsData.savings}</div>
+          <div className="savings2">Savings: {statsData.savings}</div>
           <div className="investment">Investment: {statsData.investment}</div>
           <div className="debt">Debt: {statsData.debt}</div>
         </div>

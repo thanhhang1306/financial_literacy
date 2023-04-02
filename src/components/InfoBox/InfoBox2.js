@@ -10,7 +10,7 @@ const InfoBox = () => {
     <Box className={classes.infoBoxContainer}>
       <div className={classes.header}>
         <Typography variant="h6">
-          <span>Tai Sanh Nguyen</span>
+          <span>John Doe</span>
         </Typography>
         <Typography variant="p">
           {/* Net Worth: $1000 */}

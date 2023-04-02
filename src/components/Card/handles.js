@@ -36,6 +36,8 @@ function handleCardClick(e) {
   const gameManager = GameManager.getInstance();
   if (gameManager.gameState !== GameManager.GAME_STATE.DRAW_CARDS) return;
 
+  
+
   // Flip each card on the table.
   const cards = Array.from(e.target.parentElement.children);
 
@@ -48,6 +50,11 @@ function handleCardClick(e) {
     }, 0);
   }
 
+  for (const card of cards) {
+    card.style.transform = "";
+    card.classList.remove("selected");
+  }
+
   // e.target.parentElement.querySelector(".summaryContainer").style.display = "block";
   e.target.parentElement.querySelector(".summaryContainer").style.transform = "translateY(55%)";
 
@@ -57,45 +64,36 @@ function handleCardClick(e) {
   for (let i=0; i<3; i++) {
     cards[i].querySelector(".front p").innerHTML = drawnCards[i].description;
     cards[i].querySelector(".front h1").innerHTML = drawnCards[i].type;
-    cards[i].addEventListener("click", () => {_toggleSelection(e, drawnCards, i)});      
+    cards[i].removeEventListener("click", _clickEventListener);
+    cards[i].addEventListener("click", _clickEventListener);  
   }
-  
-  
+
+  _updateSummary();  
+}
+
+function _clickEventListener(e) {
+  _toggleSelection(e);
 }
 
 function _updateSummary() {
   const gameManager = GameManager.getInstance();
-  
-  let { need, want, debt, total, savings, investments } = gameManager.getSelectedValues();
-
-  const selectedCards = gameManager.getCardSelections();
-  for (const card of selectedCards) {
-    console.log(card);
-    if (card.cardType === 0) need += card.need;
-    else if (card.cardType === 1) want += card.want;
-  }
-
-  document.querySelector(".need").innerHTML = "Need: $" + need;
-  document.querySelector(".want").innerHTML = "Want: $" + want;
-  document.querySelector(".debt").innerHTML = "Debt: $" + debt;
-  document.querySelector(".salary-discrepancy").innerHTML = "Salary + Discrepency: $" + total;
-  document.querySelector(".saving").innerHTML = "Saving: $" + savings;
-  document.querySelector(".investment").innerHTML = "Investment: $" + investments;
+  gameManager.lazyUpdateUI();
 }
 
-function _toggleSelection(e, drawnCards, cardIndex) {
-  if (!drawnCards[cardIndex].selectable) return;
-
+function _toggleSelection(e) {
   const gameManager = GameManager.getInstance();
-  gameManager.toggleSelection(cardIndex);
+  if (gameManager.gameState !== GameManager.GAME_STATE.SELECT_CARDS) return;
+
+  gameManager.toggleSelection();
   const cards = Array.from(e.target.parentElement.children);
-  const card = cards[cardIndex];
+  const card = cards[1];
   if (card.classList.contains("selected")) {
     card.classList.remove("selected");
   }
   else {
     card.classList.add("selected");
   }
+
   _updateSummary();
 }
 

@@ -479,8 +479,8 @@ export const Events = [{
    "happiness": -5
 },
 {
-   "text": "You unexpectedly lose your job due to a company layoff. No income for you :(",
-   "percent": 0,
+   "text": "You unexpectedly lose your job due to a company layoff. You manage to find a new job, but your income decreases by 70%.",
+   "percent": 0.3,
    "lump": 0,
    "happiness": -15
 },
