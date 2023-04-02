@@ -18,10 +18,10 @@ const InfoBox = () => {
       </div>
       <div>
         <div className={classes.statsContainer}>
-          <div>Salary</div>
-          <div>Savings</div>
-          <div>Investment</div>
-          <div>Debt</div>
+          <div class="salary">Salary: $80000</div>
+          <div class="savings">Savings: $0</div>
+          <div class="investment">Investment: $0</div>
+          <div class="debt">Debt: $0</div>
         </div>
       </div>
     </Box>

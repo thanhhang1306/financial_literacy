@@ -53,21 +53,37 @@ function handleCardClick(e) {
 
   // Draw cards by accessing game manager.
   const drawnCards = gameManager.drawCards();
-  console.log(drawnCards);
 
   for (let i=0; i<3; i++) {
     cards[i].querySelector(".front").innerHTML = drawnCards[i].description;
-    cards[i].addEventListener("click", () => {_toggleSelection(e, i)});      
+    cards[i].addEventListener("click", () => {_toggleSelection(e, drawnCards, i)});      
   }
   
   
 }
 
 function _updateSummary() {
+  const gameManager = GameManager.getInstance();
+  
+  let { need, want, debt, total, savings, investments } = gameManager.getSelectedValues();
 
+  const selectedCards = gameManager.getCardSelections();
+  for (const card of selectedCards) {
+    if (card.cardType === 0) need += card.value;
+    else if (card.cardType === 1) want += card.value;
+  }
+
+  document.querySelector(".need").innerHTML = "Need: $" + need;
+  document.querySelector(".want").innerHTML = "Want: $" + want;
+  document.querySelector(".debt").innerHTML = "Debt: $" + debt;
+  document.querySelector(".salary-discrepancy").innerHTML = "Salary + Discrepency: $" + total;
+  document.querySelector(".saving").innerHTML = "Saving: $" + savings;
+  document.querySelector(".investment").innerHTML = "Investment: $" + investments;
 }
 
-function _toggleSelection(e, cardIndex) {
+function _toggleSelection(e, drawnCards, cardIndex) {
+  if (!drawnCards[cardIndex].selectable) return;
+
   const gameManager = GameManager.getInstance();
   gameManager.toggleSelection(cardIndex);
   const cards = Array.from(e.target.parentElement.children);

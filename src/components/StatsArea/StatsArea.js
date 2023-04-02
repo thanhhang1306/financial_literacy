@@ -11,8 +11,8 @@ const StatsArea = () => {
   return (
     <Box className={classes.statsAreaContainer}>
       <InfoBox/>
-      <InfoBox/>
-      <InfoBox/>
+      {/* <InfoBox/> */}
+      {/* <InfoBox/> */}
       {/* <Box sx={{ width: "100%", height: "26vh", border: "1px solid black" }}></Box> */}
       {/* <Box sx={{ width: "100%", height: "26vh", border: "1px solid black" }}></Box> */}
     </Box>
