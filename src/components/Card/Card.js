@@ -32,6 +32,7 @@ const Card = props => {
       </div>
 
       <div className={`${classes.front} front`}>
+        <h1>hi</h1>
         <p>hey!</p>
       </div>
     </Box>

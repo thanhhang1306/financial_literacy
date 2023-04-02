@@ -55,7 +55,8 @@ function handleCardClick(e) {
   const drawnCards = gameManager.drawCards();
 
   for (let i=0; i<3; i++) {
-    cards[i].querySelector(".front").innerHTML = drawnCards[i].description;
+    cards[i].querySelector(".front p").innerHTML = drawnCards[i].description;
+    cards[i].querySelector(".front h1").innerHTML = drawnCards[i].type;
     cards[i].addEventListener("click", () => {_toggleSelection(e, drawnCards, i)});      
   }
   

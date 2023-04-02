@@ -22,10 +22,10 @@ const InfoBox = ({ statsData }) => {
       </div>
       <div>
       <div className={classes.statsContainer}>
-          <div className="salary">Salary: $80000</div>
-          <div className="savings">Savings: $0</div>
-          <div className="investment">Investment: $0</div>
-          <div className="debt">Debt: $0</div>
+          <div className="salary">Salary: {statsData.salary}</div>
+          <div className="savings">Savings: {statsData.savings}</div>
+          <div className="investment">Investment: {statsData.investment}</div>
+          <div className="debt">Debt: {statsData.debt}</div>
         </div>
       </div>
     </Box>

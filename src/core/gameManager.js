@@ -1,5 +1,6 @@
 /* Singleton class that holds the current state of the game,
    and handles the main life cycle of the game. */
+import { Wants, Needs, Events } from './ChoiceData.js';
 
 const CARD_TYPE = {
   NEED: 0,
@@ -49,6 +50,8 @@ class GameManager {
     this.selectedInvestments = 0;
   }
 
+
+  
   toggleSelection(cardIndex) {
     if (this.gameState !== GameManager.GAME_STATE.SELECT_CARDS) return;
     const card = this._currentCardsDrawn[cardIndex];
@@ -68,15 +71,26 @@ class GameManager {
     if (this.gameState !== GameManager.GAME_STATE.DRAW_CARDS) return;
     this.gameState = GameManager.GAME_STATE.SELECT_CARDS;
 
-    this._currentCardsDrawn.push(new Card(CARD_TYPE.NEED, "NEED", 100));
-    this._currentCardsDrawn.push(new Card(CARD_TYPE.WANT, "Want", 100));
-    this._currentCardsDrawn.push(new Card(CARD_TYPE.WANT, "WantEvent", 100));
-  
+    /* Need Card */
+    const randomNeed = Needs[Math.floor(Math.random() * Needs.length)];
+    const needCard = new NeedCard(CARD_TYPE.NEED, randomNeed.text, "Need", randomNeed.need, randomNeed.time);
+    this._currentCardsDrawn.push(needCard);
+
+    /* Want Card  */
+    const randomWant = Needs[Math.floor(Math.random() * Wants.length)];
+    const wantCard = new WantCard(CARD_TYPE.WANT, randomWant.text, "Want", randomWant.cost, randomWant.happy, randomWant.time);
+    this._currentCardsDrawn.push(wantCard);
+
+    /* Event Card */
+    const randomEvent = Needs[Math.floor(Math.random() * Events.length)];
+    const eventCard = new EventCard(CARD_TYPE.EVENT, randomEvent.text, "Event", randomEvent.percent, randomEvent.lump, randomEvent.happy);
+    this._currentCardsDrawn.push(eventCard);
+
     for (const card of this._currentCardsDrawn) {
       if (!card.selectable) continue;
       this.selectedNeed = 100;
-      if (card.cardType === CARD_TYPE.NEED) this.selectedNeed += card.value;
-      else if (card.cardType === CARD_TYPE.EVENT) this.selectedWant += card.value;
+      if (card.cardType === CARD_TYPE.WANT) this.selectedWant += card.want;
+      else if (card.cardType === CARD_TYPE.NEED) this.selectedNeed += card.need;
     }
     this.lazyUpdateUI();
     return this._currentCardsDrawn;
@@ -109,15 +123,40 @@ class GameManager {
   }
 }
 
-class Card {
-  constructor(cardType, description, value) {
+class NeedCard {
+  constructor(cardType, description, type, need, time) {
     this.cardType = cardType;
     this.description = description;
-    this.value = value;
+    this.type = type;
+    this.need = need;
     this.selectable = (cardType == CARD_TYPE.WANT) ? true : false;
+    this.time = time;
   }
 }
 
+class WantCard {
+  constructor(cardType, description, type, want, happy, time) {
+    this.cardType = cardType;
+    this.description = description;
+    this.type = type;
+    this.want = want;
+    this.happy = happy;
+    this.selectable = (cardType == CARD_TYPE.WANT) ? true : false;
+    this.time = time; 
+  }
+}
+
+class EventCard {
+  constructor(cardType, description, type, per, lump, happy) {
+    this.cardType = cardType;
+    this.description = description;
+    this.type = type;
+    this.per = per;
+    this.lump = lump;
+    this.happy = happy;
+    this.selectable = (cardType == CARD_TYPE.WANT) ? true : false;
+  }
+}
 
 
 

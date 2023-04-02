@@ -44,7 +44,9 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    flexDirection: "column",
     transform: "rotateY(180deg)",
+    textAlign: "center",
   }
 }));
 

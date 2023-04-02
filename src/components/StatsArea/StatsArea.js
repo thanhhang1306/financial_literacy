@@ -10,7 +10,7 @@ const StatsArea = () => {
 
   return (
     <Box className={classes.statsAreaContainer}>
-      <InfoBox/>
+      <InfoBox statsData={{ salary: '$50,000', savings: '$10,000', investment: '$5,000', debt: '$1,000' }} />
       {/* <InfoBox/> */}
       {/* <InfoBox/> */}
       {/* <Box sx={{ width: "100%", height: "26vh", border: "1px solid black" }}></Box> */}
